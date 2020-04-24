@@ -128,19 +128,19 @@ def transforming_data(respostas,database):
 def save_data(view_aluno,view_materias,respostas,curso_pretendido,view_qtd_curso,view_curso):
 
 
-	view_aluno.to_csv('view_aluno.csv', header=True, index=True)
+	view_aluno.to_csv('../Dados/view_aluno.csv', header=True, index=True)
 
-	view_materias.to_csv('view_materias.csv', header=True, index=True)
+	view_materias.to_csv('../Dados/view_materias.csv', header=True, index=True)
 
-	respostas.to_csv('view_respostas.csv', header=True, index=True)
+	respostas.to_csv('../Dados/view_respostas.csv', header=True, index=True)
 
-	curso_pretendido.to_csv('view_curso_pretendido.csv', header=True, index=True)
+	curso_pretendido.to_csv('../Dados/view_curso_pretendido.csv', header=True, index=True)
 
-	respostas.to_csv('view_respostas.csv', header=True, index=True)
+	respostas.to_csv('../Dados/view_respostas.csv', header=True, index=True)
 
-	view_qtd_curso.to_csv('view_qtd_curso.csv',header=True,index=False)
+	view_qtd_curso.to_csv('../Dados/view_qtd_curso.csv',header=True,index=False)
 
-	view_curso.to_csv('view_curso.csv',header=True,index=False)
+	view_curso.to_csv('../Dados/view_curso.csv',header=True,index=False)
 
 	return None
 

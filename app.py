@@ -4,13 +4,12 @@ import pandas as pd
 import numpy as np
 
 #importing dataframes
-view_aluno = pd.read_csv('view_aluno.csv')
-view_materias = pd.read_csv('view_materias.csv').drop('Unnamed: 0',axis=1)
-respostas = pd.read_csv('respostas.csv')
-curso_pretendido = pd.read_csv('curso_pretendido.csv')
-respostas = pd.read_csv('respostas.csv')
-view_qtd_curso = pd.read_csv('view_qtd_curso.csv')
-view_curso = pd.read_csv('view_curso.csv')
+view_aluno = pd.read_csv('ETL/view_aluno.csv')
+view_materias = pd.read_csv('ETL/view_materias.csv').drop('Unnamed: 0',axis=1)
+view_respostas = pd.read_csv('ETL/view_respostas.csv')
+view_curso_pretendido = pd.read_csv('ETL/view_curso_pretendido.csv')
+view_qtd_curso = pd.read_csv('ETL/view_qtd_curso.csv')
+view_curso = pd.read_csv('ETL/view_curso.csv')
 
 #Transformação view_curso para percentual por curso
 view_curso_sum = view_curso.groupby('Cursos').sum().drop(['Percentual'],axis=1).reset_index().rename({'Correção':'Total_Acerto'},axis=1)
@@ -64,12 +63,12 @@ elif sidebar_opt == 'Relatório Aluno':
 
 	st.title('Relatório Aluno:')
 
-	tabela_cpfs = curso_pretendido['CPF']
+	tabela_cpfs = view_curso_pretendido['CPF']
 	cpf = st.selectbox('CPF para consulta:',tabela_cpfs).strip()
 
 	tabela_pont_alunos = view_aluno[view_aluno['CPF']==cpf].drop('CPF',axis=1)
 
-	curso_aluno = list(curso_pretendido[curso_pretendido['CPF']==cpf]['Cursos'].values)[0]
+	curso_aluno = list(view_curso_pretendido[view_curso_pretendido['CPF']==cpf]['Cursos'].values)[0]
 
 	total_acertos = tabela_pont_alunos['Pontuação_aluno'].sum()
 	percentual_acerto = total_acertos/60
