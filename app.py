@@ -4,12 +4,12 @@ import pandas as pd
 import numpy as np
 
 #importing dataframes
-view_aluno = pd.read_csv('ETL/view_aluno.csv')
-view_materias = pd.read_csv('ETL/view_materias.csv').drop('Unnamed: 0',axis=1)
-view_respostas = pd.read_csv('ETL/view_respostas.csv')
-view_curso_pretendido = pd.read_csv('ETL/view_curso_pretendido.csv')
-view_qtd_curso = pd.read_csv('ETL/view_qtd_curso.csv')
-view_curso = pd.read_csv('ETL/view_curso.csv')
+view_aluno = pd.read_csv('Dados/view_aluno.csv')
+view_materias = pd.read_csv('Dados/view_materias.csv').drop('Unnamed: 0',axis=1)
+view_respostas = pd.read_csv('Dados/view_respostas.csv')
+view_curso_pretendido = pd.read_csv('Dados/view_curso_pretendido.csv')
+view_qtd_curso = pd.read_csv('Dados/view_qtd_curso.csv')
+view_curso = pd.read_csv('Dados/view_curso.csv')
 
 #Transformação view_curso para percentual por curso
 view_curso_sum = view_curso.groupby('Cursos').sum().drop(['Percentual'],axis=1).reset_index().rename({'Correção':'Total_Acerto'},axis=1)
