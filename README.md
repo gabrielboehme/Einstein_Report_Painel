@@ -1,5 +1,5 @@
-# [Einstein Painel](https://einsteinpainel.herokuapp.com/)
-
+# Einstein Painel
+[Link](https://einsteinpainel.herokuapp.com/)
 ![Intro Pic](Images/Painel.png)
 
 ## Table of Contents
