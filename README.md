@@ -10,10 +10,6 @@
 	3. [Executing Program](#executing)
 3. [Authors & Licensing](#authors)
 
-<a name="Motivation"></a>
-## Motivation
-
- 
 <a name="getting_started"></a>
 ## Getting Started
 
