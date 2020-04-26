@@ -10,6 +10,11 @@
 	3. [Executing Program](#executing)
 3. [Authors & Licensing](#authors)
 
+<a name="motivation"></a>
+## Motivation
+
+This is a project for the Einstein Floripa selection process.
+
 <a name="getting_started"></a>
 ## Getting Started
 
