@@ -38,7 +38,7 @@ git clone https://github.com/gabrielboehme/Disaster-Response-Painel.git
         `python ETL/transform_data.py`
 
 2. Run the following command in the app's directory to run your web app.
-    `streamlit run app.py`
+    `streamlit run PainelEinstein.py`
 
 3. Go to http://localhost:8501/
 
