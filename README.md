@@ -35,7 +35,7 @@ git clone https://github.com/gabrielboehme/Disaster-Response-Painel.git
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in new .csv files
-        `python ETL/transform_data.py`
+        `python ETL/transform_answers.py`
 
 2. Run the following command in the app's directory to run your web app.
     `streamlit run PainelEinstein.py`
