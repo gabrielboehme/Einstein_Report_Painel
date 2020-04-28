@@ -41,13 +41,13 @@ st.markdown(h1,unsafe_allow_html=True)
 
 st.markdown(h2,unsafe_allow_html=True)
 
-lista_relatorios = ['Relatório geral','Relatório Aluno','Relatório Curso','Sobre o Einstein Floripa']
+lista_relatorios = ['Relatório Geral','Relatório Aluno','Relatório Curso','Sobre o Einstein Floripa']
 sidebar_opt = st.sidebar.selectbox('Escolha o tipo de Relatório',lista_relatorios)
 
 
 #Reports options
 #Relatorio Geral
-if sidebar_opt == 'Relatório geral':
+if sidebar_opt == 'Relatório Geral':
 
 	st.title('Relatório geral das matérias:')
 
@@ -58,6 +58,9 @@ if sidebar_opt == 'Relatório geral':
 
 	st.title('Relatório geral dos cursos:')
 	st.table(view_curso_perc.style.format({'Percentual_Acerto':"{:.2%}"}))
+
+
+
 #Relatorio aluno
 elif sidebar_opt == 'Relatório Aluno':
 
@@ -66,7 +69,7 @@ elif sidebar_opt == 'Relatório Aluno':
 	tabela_cpfs = view_curso_pretendido['CPF']
 	cpf = st.selectbox('CPF para consulta:',tabela_cpfs).strip()
 
-	tabela_pont_alunos = view_aluno[view_aluno['CPF']==cpf].drop('CPF',axis=1)
+	tabela_pont_alunos = view_aluno[view_aluno['CPF']==cpf].drop('CPF',axis=1).reset_index(drop=True)
 
 	curso_aluno = list(view_curso_pretendido[view_curso_pretendido['CPF']==cpf]['Cursos'].values)[0]
 
@@ -75,11 +78,29 @@ elif sidebar_opt == 'Relatório Aluno':
 
 	concorrentes_curso = view_qtd_curso[view_qtd_curso['Cursos']==curso_aluno]['CPF'].values[0]
 
-	texto_header_aluno = f'Curso pretendido: {curso_aluno} | Total de acertos: {total_acertos} | Percentual de acerto: {percentual_acerto:.2%} | Concorrentes no curso: {concorrentes_curso}'
+	texto_header_aluno = f'Curso pretendido: {curso_aluno} | Total de acertos: {total_acertos} | Percentual de acerto: {percentual_acerto:.2%} | Concorrentes no curso: {concorrentes_curso -1 }'
 
 	st.subheader(texto_header_aluno)
 
 	st.table(tabela_pont_alunos.style.format({'Percentual_Acerto':"{:.2%}"}))
+
+	st.subheader('Gabarito aluno')
+
+	materias = view_respostas['Matérias'].sort_values().unique()
+	questao_select = st.selectbox('Matérias: ', materias)
+
+	filtro_questao = st.checkbox('Filtrar questões?')
+
+
+	if filtro_questao:
+
+			respostas = view_respostas[(view_respostas['CPF']==cpf) & (view_respostas['Matérias'].isin([questao_select]))].iloc[:,2:6].reset_index(drop=True)
+			st.table(respostas)
+			
+	else:
+
+		respostas = view_respostas[view_respostas['CPF']==cpf].iloc[:,2:6].reset_index(drop=True)
+		st.table(respostas)
 
 #Relatorio Curso
 elif sidebar_opt == 'Relatório Curso':
